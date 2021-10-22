@@ -176,6 +176,31 @@ predicate too_few_args(Call call, Value callable, int limit) {
   )
 }
 
+predicate correct_args(Call call, Value callable, int limit) {
+  // Exclude cases where an incorrect name is used as that is covered by 'Wrong name for an argument in a call'
+  not illegally_named_parameter(call, callable, _) and
+  not exists(call.getStarargs()) and
+  not exists(call.getKwargs()) and
+  arg_count(call) = limit and
+  exists(FunctionValue func | func = get_function_or_initializer(callable) |
+    call = func.getAFunctionCall().getNode() and
+    limit = func.minParameters() and
+    /*
+     * The combination of misuse of `mox.Mox().StubOutWithMock()`
+     * and a bug in mox's implementation of methods results in having to
+     * pass 1 too few arguments to the mocked function.
+     */
+
+    not (useOfMoxInModule(call.getEnclosingModule()) and func.isNormalMethod())
+    or
+    call = func.getAMethodCall().getNode() and limit = func.minParameters() - 1
+    or
+    callable instanceof ClassValue and
+    call.getAFlowNode() = get_a_call(callable) and
+    limit = func.minParameters() - 1
+  )
+}
+
 /**Whether there are too many arguments in the `call` to `func` where `limit` is the highest number of legal arguments */
 predicate too_many_args_objectapi(Call call, Object callable, int limit) {
   // Exclude cases where an incorrect name is used as that is covered by 'Wrong name for an argument in a call'
@@ -215,6 +240,7 @@ predicate too_many_args(Call call, Value callable, int limit) {
   ) and
   positional_arg_count_for_call(call, callable) > limit
 }
+
 
 /** Holds if `call` has too many or too few arguments for `func` */
 predicate wrong_args_objectapi(Call call, FunctionObject func, int limit, string too) {
