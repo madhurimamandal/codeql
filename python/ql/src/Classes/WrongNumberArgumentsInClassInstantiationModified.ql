@@ -15,17 +15,8 @@
 import python
 import Expressions.CallArgs
 
-from Call call, ClassValue cls, string too, string should, int limit, FunctionValue init
+from Call call, ClassValue cls, int limit, FunctionValue init
 where
-  (
-    too_many_args(call, cls, limit) and
-    too = "too many arguments" and
-    should = "no more than "
-    or
-    too_few_args(call, cls, limit) and
-    too = "too few arguments" and
-    should = "no fewer than "
-  ) and
+    correct_args(call, cls, limit) and
   init = get_function_or_initializer(cls)
-select call, "Call to $@ with " + too + "; should be " + should + limit.toString() + ".", init,
-  init.getQualifiedName()
+select call, "Call to $@ with ", init, init.getQualifiedName()

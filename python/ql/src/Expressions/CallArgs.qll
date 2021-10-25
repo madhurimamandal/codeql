@@ -195,31 +195,22 @@ predicate correct_args(Call call, Value callable, int limit) {
     or
     call = func.getAMethodCall().getNode() and limit = func.minParameters() - 1
     or
-    callable instanceof ClassValue and
-    call.getAFlowNode() = get_a_call(callable) and
-    limit = func.minParameters() - 1
-  )
-}
-
-/**Whether there are too many arguments in the `call` to `func` where `limit` is the highest number of legal arguments */
-predicate too_many_args_objectapi(Call call, Object callable, int limit) {
-  // Exclude cases where an incorrect name is used as that is covered by 'Wrong name for an argument in a call'
-  not illegally_named_parameter_objectapi(call, callable, _) and
-  exists(FunctionObject func |
-    func = get_function_or_initializer_objectapi(callable) and
-    not func.getFunction().hasVarArg() and
-    limit >= 0
-  |
     call = func.getAFunctionCall().getNode() and limit = func.maxParameters()
     or
-    call = func.getAMethodCall().getNode() and limit = func.maxParameters() - 1
+    call = func.getAMethodCall().getNode() and limit = func.maxParameters() - 1 
     or
-    callable instanceof ClassObject and
-    call.getAFlowNode() = get_a_call_objectapi(callable) and
+    callable instanceof ClassValue and
+    call.getAFlowNode() = get_a_call(callable) and
+    (
+    limit = func.minParameters() - 1
+    or
     limit = func.maxParameters() - 1
-  ) and
-  positional_arg_count_for_call_objectapi(call, callable) > limit
+    )
+  )
+  and
+  positional_arg_count_for_call(call, callable) = limit
 }
+
 
 /**Whether there are too many arguments in the `call` to `func` where `limit` is the highest number of legal arguments */
 predicate too_many_args(Call call, Value callable, int limit) {
@@ -241,6 +232,25 @@ predicate too_many_args(Call call, Value callable, int limit) {
   positional_arg_count_for_call(call, callable) > limit
 }
 
+/**Whether there are too many arguments in the `call` to `func` where `limit` is the highest number of legal arguments */
+predicate too_many_args_objectapi(Call call, Object callable, int limit) {
+  // Exclude cases where an incorrect name is used as that is covered by 'Wrong name for an argument in a call'
+  not illegally_named_parameter_objectapi(call, callable, _) and
+  exists(FunctionObject func |
+    func = get_function_or_initializer_objectapi(callable) and
+    not func.getFunction().hasVarArg() and
+    limit >= 0
+  |
+    call = func.getAFunctionCall().getNode() and limit = func.maxParameters()
+    or
+    call = func.getAMethodCall().getNode() and limit = func.maxParameters() - 1
+    or
+    callable instanceof ClassObject and
+    call.getAFlowNode() = get_a_call_objectapi(callable) and
+    limit = func.maxParameters() - 1
+  ) and
+  positional_arg_count_for_call_objectapi(call, callable) > limit
+}
 
 /** Holds if `call` has too many or too few arguments for `func` */
 predicate wrong_args_objectapi(Call call, FunctionObject func, int limit, string too) {
