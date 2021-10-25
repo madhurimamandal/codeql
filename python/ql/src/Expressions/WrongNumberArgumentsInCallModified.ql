@@ -27,5 +27,5 @@ where
   ) and
   /* The semantics of `__new__` can be a bit subtle, so we simply exclude `__new__` methods */
   not func.getName() = "__new__"
-select call, "Call to $@ with correct number of arguments ", func,
+select call, "Call to $@ with correct number of arguments", func,
   func.descriptiveString()

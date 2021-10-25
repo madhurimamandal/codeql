@@ -19,4 +19,4 @@ from Call call, ClassValue cls, int limit, FunctionValue init
 where
     correct_args(call, cls, limit) and
   init = get_function_or_initializer(cls)
-select call, "Call to $@ with ", init, init.getQualifiedName()
+select call, "Call to $@ with correct args", init, init.getQualifiedName()
