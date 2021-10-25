@@ -1,5 +1,5 @@
 /**
- * @name Flask app is run in debug mode
+ * @name Negative of flask app is run in debug mode
  * @description Running a Flask app in debug mode may allow an attacker to run arbitrary code through the Werkzeug debugger.
  * @kind problem
  * @problem.severity error
