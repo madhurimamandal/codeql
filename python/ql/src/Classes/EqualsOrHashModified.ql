@@ -22,40 +22,23 @@ CallableValue defines_equality(ClassValue c, string name) {
   result = c.declaredAttribute(name)
 }
 
-CallableValue implemented_method(ClassValue c, string name) {
+CallableValue implemented_eq(ClassValue c, string name) {
   result = defines_equality(c, name)
-  or
+  
+}
+
+CallableValue implemented_hash(ClassValue c, string name) {
   result = c.declaredAttribute("__hash__") and name = "__hash__"
 }
 
-string unimplemented_method(ClassValue c) {
-  not exists(defines_equality(c, _)) and
-  (
-    result = "__eq__" and major_version() = 3
-    or
-    major_version() = 2 and result = "__eq__ or __cmp__"
-  )
-  or
-  /* Python 3 automatically makes classes unhashable if __eq__ is defined, but __hash__ is not */
-  not c.declaresAttribute(result) and result = "__hash__" and major_version() = 2
-}
 
-/** Holds if this class is unhashable */
-predicate unhashable(ClassValue cls) {
-  cls.lookup("__hash__") = Value::named("None")
-  or
-  cls.lookup("__hash__").(CallableValue).neverReturns()
-}
-
-predicate violates_hash_contract(ClassValue c, string present, string missing, Value method) {
-  not unhashable(c) and
-  missing = unimplemented_method(c) and
-  method = implemented_method(c, present) and
-  not c.failedInference(_)
-}
-
-from ClassValue c, string present, string missing, CallableValue method
+from ClassValue c,  string present1, 
+CallableValue method_eq, string present2, 
+CallableValue method_hash
 where
-  violates_hash_contract(c, present, missing, method) and
-  exists(c.getScope()) // Suppress results that aren't from source
-select method, "Class $@ implements " 
+method_eq = implemented_eq(c, present1) and
+method_hash = implemented_hash(c, present2) and
+not c.failedInference(_)
+
+select c, "Class $@ implements " + present1 + "and" + present2, method_eq, 
+  c.getName()
