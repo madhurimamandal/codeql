@@ -1,5 +1,5 @@
 /**
- * @name Negative of conflicting attributes in base classes
+ * @name Negative of Conflicting attributes in base classes
  * @description When a class subclasses multiple base classes and more than one base class defines the same attribute, attribute overriding may result in unexpected behavior by instances of this class.
  * @kind problem
  * @tags reliability

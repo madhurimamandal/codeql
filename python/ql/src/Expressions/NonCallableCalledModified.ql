@@ -1,5 +1,5 @@
 /**
- * @name Non-callable called
+ * @name Negative of Non-callable called
  * @description A call to an object which is not a callable will raise a TypeError at runtime.
  * @kind problem
  * @tags reliability

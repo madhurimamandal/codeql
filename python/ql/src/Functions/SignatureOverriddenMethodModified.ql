@@ -1,5 +1,5 @@
 /**
- * @name Negative of signature mismatch in overriding method
+ * @name Negative of Signature mismatch in overriding method
  * @description Overriding a method without ensuring that both methods accept the same
  *              number and type of parameters has the potential to cause an error when there is a mismatch.
  * @kind problem
@@ -25,7 +25,6 @@ where
   derived.getName() != "__init__" and
   derived.isNormalMethod() and
   not derived.getScope().isSpecialMethod() and
-  // call to overrides distributed for efficiency
   (
     derived.overrides(base) and derived.maxParameters() = base.maxParameters()
   )

@@ -1,5 +1,5 @@
 /**
- * @name Helping to finding negative w.r.t `__init__` method calls overridden method
+ * @name Negative of `__init__` method calls overridden method
  * @description Calling a method from `__init__` that is overridden by a subclass may result in a partially
  *              initialized instance being observed.
  * @kind problem
@@ -15,7 +15,7 @@ import python
 
 from
   ClassObject supercls, ClassObject sub, string method, Call call, 
-  FunctionObject overridden
+  FunctionObject function
 where
   exists(FunctionObject init, SelfAttribute sa |
     supercls.declaredAttribute("__init__") = init and
@@ -23,7 +23,7 @@ where
     call.getFunc() = sa
   |
     sa.getName() = method and
-    overridden = supercls.declaredAttribute(method)
+    function = supercls.declaredAttribute(method)
     and 
     supercls = sub.getASuperType()
   )

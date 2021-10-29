@@ -23,7 +23,6 @@ string ordering_name(int n) {
 }
 
 Value ordering_method(ClassValue c, string name) {
-  /* If class doesn't declare a method then don't blame this class (the superclass will be blamed). */
   name = ordering_name(_) and result = c.declaredAttribute(name)
 }
 

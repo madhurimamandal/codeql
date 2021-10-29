@@ -1,5 +1,5 @@
 /**
- * @name Negative of use of the return value of a procedure
+ * @name Negative of Use of the return value of a procedure
  * @description The return value of a procedure (a function that does not return a value) is used. This is confusing to the reader as the value (None) has no meaning.
  * @kind problem
  * @tags maintainability
@@ -27,11 +27,10 @@ predicate is_used(Call c) {
 
 from Call c, FunctionValue func
 where
-  /* Call result is used, but callee is a procedure */
+  /* Call result is used*/
   is_used(c) and
   c.getFunc().pointsTo(func) and
   not func.getScope().isProcedure() and
-  /* All callees are procedures */
   forall(FunctionValue callee | c.getFunc().pointsTo(callee) | not callee.getScope().isProcedure())
 
 select c, "The result of '$@' is used.", func, func.getQualifiedName()
