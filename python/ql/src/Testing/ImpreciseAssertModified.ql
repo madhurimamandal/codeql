@@ -1,5 +1,5 @@
 /**
- * @name Negative of imprecise assert
+ * @name Negative of Imprecise assert
  * @description Using 'assertTrue' or 'assertFalse' rather than a more specific assertion can give uninformative failure messages.
  * @kind problem
  * @tags maintainability
@@ -12,36 +12,23 @@
 
 import python
 
-predicate callToPreciseAssertOnComparison(Call call, string assertName) {
-  call.getFunc().(Attribute).getName() = assertName 
+/* Helper predicate for CallToAssertOnComparison class */
+predicate callToAssertOnComparison(Call call, string assertName) {
+  call.getFunc().(Attribute).getName() = assertName  
   
 }
 
-class CallToPreciseAssertOnComparison extends Call {
-  CallToPreciseAssertOnComparison() { callToPreciseAssertOnComparison(this, _) }
+class CallToAssertOnComparison extends Call {
+  CallToAssertOnComparison() { callToAssertOnComparison(this, _) }
 
-  string getMethodName() { callToPreciseAssertOnComparison(this, result) }
 
-  string getBetterName() {
-    exists( |
-      callToPreciseAssertOnComparison(this, "assertEqual") and
-
-      (result = "assertEqual"
-      )
-      or
-      callToPreciseAssertOnComparison(this, "assertNotEqual") and
-      ( result = "assertNotEqual"
-      )
-
-    )
-
-  }
-
+  string getMethodName() { callToAssertOnComparison(this, result) }
+  
 }
 
-from CallToPreciseAssertOnComparison call
+from CallToAssertOnComparison call
 where
   /* Exclude cases where an explicit message is provided*/
-  not exists(call.getArg(1))
+  exists(call.getArg(1))
 select call,
-  call.getMethodName() + call.getBetterName()
+  call.getMethodName() 
