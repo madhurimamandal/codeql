@@ -73,3 +73,19 @@ predicate missing_call_to_superclass_method(
   does_something(missing) and
   not missing_call(top, name)
 }
+
+predicate not_missing_call_to_superclass_method(
+  ClassObject self, FunctionObject top, FunctionObject not_missing, string name
+) {
+  not_missing = self.getASuperType().declaredAttribute(name) and
+  top = self.lookupAttribute(name) and
+  
+  top.getACallee*() = not_missing and
+  /* Make sure that all named 'methods' are objects that we can understand. */
+  not exists(ClassObject sup |
+    sup = self.getAnImproperSuperType() and
+    named_attributes_not_method(sup, name)
+  ) and
+  not self.isAbstract() and
+  does_something(not_missing) 
+}
