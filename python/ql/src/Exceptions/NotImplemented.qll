@@ -8,3 +8,11 @@ predicate use_of_not_implemented_in_raise(Raise raise, Expr notimpl) {
     notimpl = raise.getException().(Call).getFunc()
   )
 }
+
+predicate use_of_not_implemented_error_in_raise(Raise raise, Expr notimpl) {
+  notimpl.pointsTo(Value::named("NotImplementedError")) and
+  (
+    notimpl = raise.getException() or
+    notimpl = raise.getException().(Call).getFunc()
+  )
+}
