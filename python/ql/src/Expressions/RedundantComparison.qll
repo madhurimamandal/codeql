@@ -32,6 +32,16 @@ class RedundantComparison extends Compare {
   }
 }
 
+class NotRedundantComparison extends Compare {
+  NotRedundantComparison() {
+    exists(Expr left, Expr right |
+      this.compares(left, _, right) and
+      not same_variable(left, right)
+    )
+  }
+}
+
+
 private predicate same_variable(Expr left, Expr right) {
   same_name(left, right)
   or
