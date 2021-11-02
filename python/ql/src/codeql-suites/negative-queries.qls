@@ -1,0 +1,23 @@
+- description: Queries to help form negative examples
+- query: Imports/UnusedImportModified.ql
+- query: Classes/DefineEqualsWhenAddingAttributesModified.ql
+- query: Functions/UseImplicitNoneReturnValueModified.ql
+- query: Expressions/WrongNumberArgumentsInCallModified.ql
+- query: Expressions/IncorrectComparisonUsingIsModified.ql
+- query: Expressions/NonCallableCalledModified.ql
+- query: Classes/InitCallsSubclassMethodModified.ql
+- query: Functions/SignatureOverriddenMethodModified.ql
+- query: Classes/ConflictingAttributesInBaseClassesModified.ql
+- query: Classes/EqualsOrHashModified.ql
+- query: Security/CWE-215/FlaskDebugModified.ql
+- query: Classes/WrongNumberArgumentsInClassInstantiationModified.ql
+- query: Classes/IncompleteOrderingModified.ql
+- query: Variables/UnusedLocalVariableModified.ql
+- query: Exceptions/CatchingBaseExceptionModification.ql
+- query: Testing/ImpreciseAssertModified.ql
+- query: Variables/MultiplyDefinedModified.ql
+- query: Expressions/EqualsNoneModified.ql
+- query: Statements/UnreachableCodeModified.ql
+- query: Functions/NonSelfModified.ql
+- query: Statements/UnnecessaryPassModified.ql
+- query: 

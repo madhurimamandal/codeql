@@ -20,4 +20,5 @@ where
   f.pointsTo(v, origin) and
   t = v.getClass() and
   t.isCallable()
-select c, "Call to a $@ of $@.", origin, "non-callable", t, t.toString()
+  select c, "Call to a $@ of $@.", origin, "callable", t, t.toString()
+
