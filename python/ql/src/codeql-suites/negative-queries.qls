@@ -42,4 +42,6 @@
 - query: Security/CWE-377/InsecureTemporaryFileModified.ql
 - query: Variables/GlobalAtModuleLevelModified.ql
 - query: Functions/SignatureSpecialMethodsModified.ql
-- query: 
+- query: Statements/ShouldUseWithStatementModified.ql
+- query: Security/CWE-020/IncompleteUrlSubstringSanitizationModified.ql
+- query: Exceptions/UnguardedNextInGeneratorModified.ql
