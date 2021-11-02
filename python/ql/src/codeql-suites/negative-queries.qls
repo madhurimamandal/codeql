@@ -20,4 +20,26 @@
 - query: Statements/UnreachableCodeModified.ql
 - query: Functions/NonSelfModified.ql
 - query: Statements/UnnecessaryPassModified.ql
+- query: Expressions/DuplicateKeyInDictionaryLiteralModified.ql
+- query: Classes/MissingCallToInitModified.ql
+- query: Expressions/UnintentionalImplicitStringConcatenationModified.ql
+- query: Variables/SuspiciousUnusedLoopIterationVariableModified.ql
+- query: Statements/SideEffectInAssertModified.ql
+- query: Statements/UnnecessaryElseClauseModified.ql
+- query: Statements/RedundantAssignmentModified.ql
+- query: Expressions/CallToSuperWrongClassModified.ql
+- query: Statements/NestedLoopsSameVariableModified.ql
+- query: Statements/ConstantInConditionalModified.ql
+- query: Expressions/CompareIdenticalValuesModified.ql
+- query: Imports/DeprecatedModuleModified.ql
+- query: Exceptions/NotImplementedIsNotAnExceptionModified.ql
+- query: Functions/IterReturnsNonIteratorModified.ql
+- query: Statements/UnnecessaryDeleteModified.ql
+- query: Functions/DeprecatedSliceMethodModified.ql
+- query: Exceptions/IllegalRaiseModified.ql
+- query: Expressions/CompareConstantsModified.ql
+- query: Imports/UnintentionalImportModified.ql
+- query: Security/CWE-377/InsecureTemporaryFileModified.ql
+- query: Variables/GlobalAtModuleLevelModified.ql
+- query: Functions/SignatureSpecialMethodsModified.ql
 - query: 
