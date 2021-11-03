@@ -1,12 +1,13 @@
 /**
- * @name Negative of Module is imported with 'import' and 'import from'
- * @description A module is imported with the "import" and "import from" statements
+ * @name Negative of Module is imported more than once
+ * @description Importing a module a second time has no effect and impairs readability
  * @kind problem
  * @tags maintainability
+ *       useless-code
  * @problem.severity recommendation
- * @sub-severity low
+ * @sub-severity high
  * @precision very-high
- * @id py/import-and-import-from
+ * @id py/repeated-import
  */
 
 
