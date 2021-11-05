@@ -1,7 +1,0 @@
-- description: Queries to help form negative examples
-- query: Imports/ImportandImportFromModified.ql
-- query: Imports/MultipleImportsModified.ql
-- query: Expressions/UselessComparisonTestModified.ql
-- query: Statements/ModificationOfLocalsModified.ql
-- query: Functions/IncorrectRaiseInSpecialMethodModified.ql
-- query: Functions/ModificationOfParameterWithDefaultModified.ql

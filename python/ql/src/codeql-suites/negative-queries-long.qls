@@ -16,3 +16,8 @@
 - query: Imports/UnintentionalImportModified.ql
 - query: Statements/ShouldUseWithStatementModified.ql
 - query: Imports/UnusedImportModified.ql
+- query: Imports/ImportandImportFromModified.ql
+- query: Imports/MultipleImportsModified.ql
+- query: Functions/ModificationOfParameterWithDefaultModified.ql
+- query: Expressions/UselessComparisonTestModified.ql
+- query: Statements/ModificationOfLocalsModified.ql
