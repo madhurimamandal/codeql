@@ -1,5 +1,0 @@
-- description: Queries to help form negative examples
-- query: Imports/UnusedImportModified.ql
-- query: Classes/DefineEqualsWhenAddingAttributesModified.ql
-- query: Functions/UseImplicitNoneReturnValueModified.ql
-- query: Expressions/WrongNumberArgumentsInCallModified.ql

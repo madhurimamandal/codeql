@@ -1,0 +1,2 @@
+- description: Queries to help form negative examples
+- query: Variables/MultiplyDefinedModified.ql
