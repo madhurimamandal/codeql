@@ -1,8 +1,8 @@
 /**
- * @name Negative of Modification of parameter with default
+ * @name Modification of parameter with default
  * @description Modifying the default value of a parameter can lead to unexpected
  *              results.
- * @kind path-problem
+ * @kind problem
  * @tags reliability
  *       maintainability
  * @problem.severity error
@@ -65,4 +65,3 @@ where
   assignment(a, left, right) and
   not same_value(left, right)
 select a, "Assignment"
-

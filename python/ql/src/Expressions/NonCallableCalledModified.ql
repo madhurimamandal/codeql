@@ -19,6 +19,8 @@ where
   f = c.getFunc() and
   f.pointsTo(v, origin) and
   t = v.getClass() and
-  t.isCallable()
-  select c, "Call to a $@ of $@.", origin, "callable", t, t.toString()
-
+  t.isCallable() and
+  not t.failedInference(_) and
+  not t.hasAttribute("__get__") and
+  not use_of_not_implemented_in_raise(_, f)
+  select c, t.getClass() +  ":::Call to a $@ of $@.", origin, "callable", t, t.toString()

@@ -28,3 +28,4 @@
 - query: Exceptions/CatchingBaseExceptionModification.ql
 - query: Testing/ImpreciseAssertModified.ql
 - query: Functions/IncorrectRaiseInSpecialMethodModified.ql
+- query: Functions/ModificationOfParameterWithDefaultModified.ql
