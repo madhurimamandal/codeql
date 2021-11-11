@@ -1,0 +1,5 @@
+- description: Queries to help form negative examples
+- query: Functions/ModificationOfParameterWithDefaultModified.ql
+- query: Expressions/DuplicateKeyInDictionaryLiteralModified.ql
+- query: Classes/EqualsOrHashModified.ql
+- query: Testing/ImpreciseAssertModified.ql

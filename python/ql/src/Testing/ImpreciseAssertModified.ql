@@ -19,7 +19,33 @@ predicate callToAssertOnComparison(Call call, string assertName) {
 }
 
 class CallToAssertOnComparison extends Call {
-  CallToAssertOnComparison() { callToAssertOnComparison(this, _) }
+  CallToAssertOnComparison() { callToAssertOnComparison(this, "assertEqual") 
+or 
+callToAssertOnComparison(this, "assertNotEqual")
+
+or
+callToAssertOnComparison(this, "assertLess")
+
+or
+callToAssertOnComparison(this, "assertLessEqual")
+
+or
+callToAssertOnComparison(this, "assertGreater")
+
+or
+callToAssertOnComparison(this, "assertGreaterEqual")
+
+or
+callToAssertOnComparison(this, "assertIn")
+
+or
+callToAssertOnComparison(this, "assertNotIn")
+
+or
+callToAssertOnComparison(this, "assertIs")
+
+or
+callToAssertOnComparison(this, "assertIsNot")}
 
 
   string getMethodName() { callToAssertOnComparison(this, result) }
@@ -28,7 +54,6 @@ class CallToAssertOnComparison extends Call {
 
 from CallToAssertOnComparison call
 where
-  /* Exclude cases where an explicit message is provided*/
   exists(call.getArg(1))
 select call,
   call.getMethodName() 

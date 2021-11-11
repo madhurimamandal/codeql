@@ -40,5 +40,5 @@ method_eq = implemented_eq(c, present1) and
 method_hash = implemented_hash(c, present2) and
 not c.failedInference(_)
 
-select c, "Class $@ implements " + present1 + "and" + present2, method_eq, 
+select method_eq, "Class $@ implements " + present1 + "and" + present2, c,
   c.getName()

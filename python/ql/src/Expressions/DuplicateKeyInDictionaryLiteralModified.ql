@@ -32,5 +32,5 @@ predicate dict_key(Dict d, Expr k, string s) {
 
 from Dict d, Expr k1
 where
-  not exists(string s | dict_key(d, k1, s) )
-select d, "Dictionary key"
+   exists(string s | dict_key(d, k1, s) )
+select k1, "Dictionary key"
