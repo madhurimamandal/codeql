@@ -2,4 +2,5 @@
 - query: Functions/ModificationOfParameterWithDefaultModified.ql
 - query: Expressions/DuplicateKeyInDictionaryLiteralModified.ql
 - query: Classes/EqualsOrHashModified.ql
+- query: Classes/EqualsOrHashModified_2.ql
 - query: Testing/ImpreciseAssertModified.ql
