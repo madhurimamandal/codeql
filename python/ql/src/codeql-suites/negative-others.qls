@@ -1,0 +1,20 @@
+- description: Queries to help form negative examples
+- query: Imports/UnusedImportModifiedOther.ql
+- query: Testing/ImpreciseAssertModifiedOther.ql
+- query: Exceptions/CatchingBaseExceptionModificationOther.ql
+- query: Variables/MultiplyDefinedModifiedOther.ql
+- query: Expressions/EqualsNoneModifiedOther.ql
+- query: Classes/MissingCallToInitModifiedOther.ql
+- query: Classes/DefineEqualsWhenAddingAttributesModifiedOther.ql
+- query: Functions/SignatureOverriddenMethodModifiedOther.ql
+- query: Expressions/UselessComparisonTestModifiedOther.ql
+- query: Exceptions/NotImplementedIsNotAnExceptionModifiedOther.ql
+- query: Classes/InitCallsSubclassMethodModifiedOther.ql
+- query: Classes/ConflictingAttributesInBaseClassesModifiedOther.ql
+- query: Security/CWE-020/IncompleteUrlSubstringSanitizationModifiedOther.ql
+- query: Classes/EqualsOrHashModifiedOther.ql
+- query: Expressions/CompareIdenticalValuesModifiedOther.ql
+- query: Functions/IncorrectRaiseInSpecialMethodModifiedOther.ql
+- query: Imports/ImportandImportFromModifiedOther.ql
+- query: Imports/MultipleImportsModifiedOther.ql
+- query: Imports/DeprecatedModuleModifiedOther.ql
