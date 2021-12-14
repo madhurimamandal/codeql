@@ -2,7 +2,7 @@
  * @name Negative of Modification of parameter with default
  * @description Modifying the default value of a parameter can lead to unexpected
  *              results.
- * @kind path-problem
+ * @kind problem
  * @tags reliability
  *       maintainability
  * @problem.severity error
@@ -13,12 +13,13 @@
 
 
 import python
-import semmle.python.functions.ModificationOfParameterWithDefault
-import DataFlow::PathGraph
 
-from
-  ModificationOfParameterWithDefault::Configuration config, DataFlow::PathNode source,
-  DataFlow::PathNode sink
-where config.hasFlowPath(source, sink)
-select source.getNode(), sink, source, "$@", sink.getNode(),
-  "Default value"
+predicate assignment(AssignStmt a, Expr left, Expr right) {
+  a.getATarget() = left and a.getValue() = right
+}
+
+
+from AssignStmt a, Expr left, Expr right
+where
+  assignment(a, left, right)
+select a, "Assignment"
