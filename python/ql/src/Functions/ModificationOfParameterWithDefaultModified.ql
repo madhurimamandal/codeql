@@ -11,6 +11,7 @@
  * @id py/modification-of-default-value
  */
 
+
 import python
 import semmle.python.functions.ModificationOfParameterWithDefault
 import DataFlow::PathGraph
@@ -18,6 +19,6 @@ import DataFlow::PathGraph
 from
   ModificationOfParameterWithDefault::Configuration config, DataFlow::PathNode source,
   DataFlow::PathNode sink
-where not config.hasFlowPath(source, sink)
-select sink.getNode(), source, sink, "$@ flows to here and is mutated.", source.getNode(),
+where config.hasFlowPath(source, sink)
+select source.getNode(), sink, source, "$@", sink.getNode(),
   "Default value"
