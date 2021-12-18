@@ -13,10 +13,12 @@
 import python
 import IsComparisons
 
-from Compare comp
+from Compare comp, Cmpop op
 where
-
-    comp.getOp(0) instanceof Eq 
-    
+(
+  op instanceof Is
+  or
+  op instanceof IsNot
+)
 select comp,
-  "Values compared using " + comp.getOp(0).getSymbol() 
+"Values compared using '" + op.getSymbol()
