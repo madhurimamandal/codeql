@@ -11,8 +11,8 @@
  */
 
 
+
 import python
 
-from ImportExpr imp
-where exists(string str | str = imp.getName())
-select imp, "Imported module " + imp.getName()
+from Import imp
+select imp, "Imported module "

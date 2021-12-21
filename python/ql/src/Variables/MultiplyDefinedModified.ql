@@ -15,15 +15,11 @@ import python
 import Definition
 
 
-from AstNode asgn1, AstNode asgn2, Variable v
+from AstNode asgn1, Variable v
 where
-exists(Definition def, Definition redef |
+exists(Definition def|
   def.getVariable() = v and
-  def = asgn1.getAFlowNode() and
-  redef = asgn2.getAFlowNode()
-|
-  not def.isUnused() and
-  not def.getARedef() = redef and
+  def = asgn1.getAFlowNode()and
   def.isRelevant()
 )
 

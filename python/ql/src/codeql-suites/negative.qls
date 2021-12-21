@@ -50,4 +50,4 @@
 - query: Testing/ImpreciseAssertModified.ql
 - query: Functions/IncorrectRaiseInSpecialMethodModified.ql
 - query: Functions/ModificationOfParameterWithDefaultModified.ql
-- query: Variables/MultiplyDefinedModifiedOther.ql
+- query: Variables/MultiplyDefinedModified.ql

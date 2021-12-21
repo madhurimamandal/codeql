@@ -1,5 +1,4 @@
 - description: Queries to help form negative examples
-- query: Imports/UnusedImportModifiedOther.ql
 - query: Testing/ImpreciseAssertModifiedOther.ql
 - query: Exceptions/CatchingBaseExceptionModificationOther.ql
 - query: Expressions/EqualsNoneModifiedOther.ql
@@ -11,10 +10,5 @@
 - query: Classes/InitCallsSubclassMethodModifiedOther.ql
 - query: Classes/ConflictingAttributesInBaseClassesModifiedOther.ql
 - query: Expressions/CompareIdenticalValuesModifiedOther.ql
-- query: Functions/IncorrectRaiseInSpecialMethodModifiedOther.ql
-- query: Imports/ImportandImportFromModifiedOther.ql
-- query: Imports/MultipleImportsModifiedOther.ql
-- query: Imports/DeprecatedModuleModifiedOther.ql
 - query: Statements/UnnecessaryElseClauseModifiedOther.ql
-- query: Variables/MultiplyDefinedModifiedOther.ql
 - query: Security/CWE-020/IncompleteUrlSubstringSanitizationModifiedOther.ql
