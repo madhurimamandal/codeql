@@ -11,17 +11,9 @@
  */
 
 import python
-import MethodCallOrder
 
-from ClassObject self, FunctionObject initializer,
-FunctionObject missing, ClassObject b1, int i1
+from ClassObject self, Module module_scope
 where
-  self.lookupAttribute("__init__") = initializer and
-  self.getBaseType(i1) = b1 and
-  i1>0 and
-  not missing.neverReturns() and
-  not self.failedInference() and
-  not missing.isBuiltin() and
-  not self.isAbstract()
-select self,
-  "Class " + self.getName()
+  self.getPyClass().getEnclosingScope() = module_scope and
+  self.getPyClass().getLocation().getFile() = module_scope.getFile()
+select self, "Class " + self.getQualifiedName()
