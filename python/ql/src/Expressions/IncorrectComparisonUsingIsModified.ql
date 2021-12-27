@@ -15,7 +15,8 @@ import IsComparisons
 
 from Compare comp, Cmpop op
 where
-(
+( op = comp.getOp(0) 
+  and 
   op instanceof Is
   or
   op instanceof IsNot
